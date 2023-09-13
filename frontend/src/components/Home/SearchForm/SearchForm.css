@@ -1,0 +1,49 @@
+.search-form {
+    width: 50%;
+    position: relative;
+    bottom: -32px;
+}
+
+.search-bar {
+    width: 100%;
+    height: 65px;
+    text-indent: 55px;
+    background: #fff;
+    border: none;
+    border-radius: 2em;
+    box-shadow: 0 2px 24px 0 rgba(0,0,0,.24);
+}
+
+.search-bar::placeholder {
+    font-weight: 700;
+}
+
+.search-bar:focus {
+    font-weight: 900;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 17px;
+    left: 15px;
+    fill: #F8F1F1;
+}
+
+.search-btn {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    background: #025464;
+    background-image: url('../../../assets/images/r-arrow.png');
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 10px;
+    right: 10px;
+    border: none;
+    border-radius: 50%;
+    
+}
