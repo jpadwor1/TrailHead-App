@@ -6,12 +6,12 @@ const authController = require('../controllers/authController');
 
 
 // Local Authentication
-router.post('/signup', authController.signup);
+router.post('/api/register', authController.register);
 
 
-router.post('/login', passport.authenticate('local'), authController.login);
+router.post('/api/login', passport.authenticate('local'), authController.login);
 
-router.get('/logout', authController.logout);
+router.get('/api/logout', authController.logout);
 
   
 module.exports = router;

@@ -18,25 +18,32 @@ const requireAuth = (req, res, next) => {
     return next();
   }
 };
-exports.signup = async (req, res) => {   
-        const inputEmail = req.body.signupEmail;
-        console.log(inputEmail);
-        try {
-            const hashedPassword = await bcrypt.hash(req.body.password, 10);
-            const user = new User({
-                local: {
-                    email: inputEmail,
-                    password: hashedPassword
-                }
-            });
-            await user.save();
-            res.redirect('./home');
-        } catch (err){
-            console.log(err);
-            res.render('./trails/register', { messages: req.flash() });
-        }
-    
+
+exports.register = async (req, res) => {
+  const { email, username, password } = req.body; 
+
+  try {
+      // Input validation should be performed here
+      
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = new User({
+          local: {
+              username: username,
+              email: email, 
+              password: hashedPassword
+          }
+      });
+
+      await user.save();
+
+      // After successful registration, respond with a success message
+      res.status(201).json({ message: 'User registered successfully' });
+  } catch (err) {
+      // Handle errors and provide meaningful error responses
+      res.status(400).json({ error: 'User registration failed', message: err.message });
+  }
 };
+
 
 exports.login = (req, res) => {
     // If this function gets called, authentication was successful.
