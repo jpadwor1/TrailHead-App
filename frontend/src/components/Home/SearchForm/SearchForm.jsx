@@ -1,7 +1,7 @@
 import './SearchForm.css';
 import React from 'react';
-import SearchIcon from '../../assets/images/searchIcon.svg';
-import  useSearch from '../../hooks/useSearch.jsx';
+import SearchIcon from '../../../assets/images/searchIcon.svg';
+import  useSearch from '../../../hooks/useSearch';
 
 
 function SearchForm() {
@@ -21,7 +21,7 @@ function SearchForm() {
  }
  
   return (
-    <div>
+    <div className='home-search-container'>
         <form className="search-form" action="/trails/search" onSubmit={handleSubmit} >
             <img className="search-icon" src={SearchIcon} alt="Search Icon" />
             <input 

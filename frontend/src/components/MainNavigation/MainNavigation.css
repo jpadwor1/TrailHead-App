@@ -1,0 +1,83 @@
+.navbar {
+    background-color: #F8F1F1;
+}
+
+.logo {
+    width: 200px;
+    filter: invert(22%) sepia(32%) saturate(2880%) hue-rotate(159deg) brightness(94%) contrast(98%);
+}
+
+.nav-link {
+    color: #025464;
+   font-size: 18px;
+   font-weight: 700;
+}
+
+.navbar-toggler {
+    border: none;
+
+}
+
+.navbar-toggler-icon {
+    filter: invert(22%) sepia(32%) saturate(2880%) hue-rotate(159deg) brightness(94%) contrast(98%);
+    background-size: 120%;
+}
+
+.navbar-btn-container {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+
+}
+
+.login-btn,
+.register-btn,
+.logout-btn,
+.profile-btn {
+    padding: 8px 12px;
+    margin: 5px 5px 0 5px;
+    border-radius: 2em;
+    text-decoration: none;   
+    font-weight: 700;
+    transition: all .350s;
+    width: 150px;
+    align-self: flex-end;
+}
+
+.login-btn,
+.profile-btn {
+    background: transparent;
+    border: 1px solid #025464;
+    color: #025464;
+}
+
+.login-btn:hover,
+.profile-btn:hover {
+    border: 1px solid #025464;
+    background-color: #025464;
+    color: #fff;
+}
+
+.register-btn,
+.logout-btn {
+    border: 1px solid #025464;
+    background-color: #025464;
+    color: #fff;
+}
+
+.register-btn:hover,
+.logout-btn:hover {
+    background: transparent;
+    border: 1px solid #025464;
+    color: #025464;
+}
+
+.dropdown-menu {
+    border: none;
+    font-family: 'Manrope', sans-serif;
+    box-shadow: 0 2px 24px 0 rgba(0,0,0,.24);
+}
+
+.navbar-offcanvas {
+    align-items: flex-end;
+}

@@ -1,0 +1,36 @@
+.register-form-container {
+    width: 600px;
+}
+.signup-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+
+}
+.signup-btn {
+    margin-top: 20px;
+    background-color: #025464;
+    border: 1px solid #025464;
+    color: #efefec;
+    font-weight: 600;
+}
+
+.signup-btn:hover {
+    border: 1px solid #025464;
+    color: #025464;
+}
+
+.register-input {
+    margin-bottom: 20px;
+    color: #025464;
+    outline: none;
+}
+
+.register-input:active,
+.register-input:focus {
+    outline: none;
+    box-shadow: none;
+}
