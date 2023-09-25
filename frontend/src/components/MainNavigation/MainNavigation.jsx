@@ -18,18 +18,18 @@ function MainNavigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end"  id="basic-navbar-nav">
           <Nav className="navbar-offcanvas">
-            <Nav.Link className='nav-link ' href="#home">HOME</Nav.Link>
-            <Nav.Link className='nav-link ' href="#link">ALL TRAILS</Nav.Link>
+            <Nav.Link className='nav-link ' href="/">HOME</Nav.Link>
+            <Nav.Link className='nav-link ' href="/alltrails">ALL TRAILS</Nav.Link>
             <NavDropdown title="COMMUNITY" id="basic-nav-dropdown">
             <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item href="/api/add-trail">
                 ADD A TRAIL
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">REGISTER</NavDropdown.Item>
               
             </NavDropdown>
             <div className="navbar-btn-container justify-content-end">
-                <Button className='login-btn' href='#'>Login</Button>
+                <Button className='login-btn' href='/signin'>Login</Button>
                 <Button className='register-btn'href='/register'>Register</Button>
             </div>
           </Nav>

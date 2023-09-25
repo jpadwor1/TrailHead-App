@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import './RegisterForm.css'
-import Register from '../../Pages/Register';
+import Register from '../../Pages/Register/Register';
 import axios from 'axios';
 
 function RegisterForm() {
