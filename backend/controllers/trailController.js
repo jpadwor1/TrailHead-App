@@ -55,15 +55,16 @@ exports.getTrails = async (req, res) => {
       // calculate average latitude and longitude
       let centerLat = totalLat / count;
       let centerLng = totalLng / count;
-      res.render('./trails/search', {authenticated:authenticated,trailImages:trailImages, trails: trails,
-        centerLng:centerLng,
-        centerLat:centerLat,
-        mapbox:mapbox
+      res.json({
+        trails,
+        centerLat,
+        centerLng
       });
     } catch (error) {
       console.log(error);
+      res.status(500).json({ error: 'Failed to fetch trails' });
     }
-};
+  };
 
 exports.getTrailById = async (req,res) => {
   

@@ -6,16 +6,19 @@ require('dotenv').config();
 
 router.use(express.json());
 
-router.post('/nearby', trailController.findNearbyTrails);
+router.post('/api/nearby', trailController.findNearbyTrails);
 
 router.get('/', trailController.getHome); 
 
-router.get('/trails', trailController.getTrails);
+router.get('/api/trails', (req, res, next) => {
+    console.log("GET /api/trails route hit");
+    trailController.getTrails(req, res, next);
+  });
   
-router.get('/trails/:id', trailController.getTrailById);
+router.get('/api/trails/:id', trailController.getTrailById);
 
-router.post('/trails/search', trailController.searchTrails);
+router.post('/api/trails/search', trailController.searchTrails);
 
-router.post('/trails/:id/reviews', trailController.createReview);
+router.post('/api/trails/:id/reviews', trailController.createReview);
 
 module.exports = router;

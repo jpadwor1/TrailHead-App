@@ -1,68 +1,84 @@
 import React from 'react'
 import { useState, useRef, useEffect } from 'react'
-import './Map.css'
-import Map from 'react-map-gl';
-const mapboxToken = process.env.REACT_APP_MAPBOX_TOKEN;
+import './MapComponent.css'
+import Map, { Source, Layer } from 'react-map-gl';
+import axios from 'axios';
 
-const MapComponent = ({ trails, mapboxToken, centerLat, centerLng }) => {
+const MapComponent = () => {
+    const [loading, setLoading] = useState(true);
+    const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN;
+    const [trailsData, setTrailsData] = useState([]);
     const [viewport, setViewport] = useState({
         width: '100%',
-        height: '100%',
-        latitude: centerLat,
-        longitude: centerLng,
-        zoom: 6
+        height: '400px',
+        latitude: 39.944829,
+        longitude:  -115.046811,
+        zoom: 5
     });
-
     const mapRef = useRef();
+    const trails = trailsData.trails || [];
 
-    // Replace the load event listener of mapbox-gl
     useEffect(() => {
-        const map = mapRef.current.getMap();
+    async function fetchData() {
+      try {
+        const response = await axios.get('http://localhost:3000/api/trails');
+        setTrailsData(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching the trails data:", error);
+        setLoading(false);
+      }
+    }
+    
+    fetchData();
+}, []);
 
-        // Your map logic that was previously in map.on('load', () => {...})
 
-    }, []);
+const handleMapLoad = (event) => {
+  const map = event.target; // This should give you the underlying map instance
+  // Your map logic that was previously in map.on('load', () => {...})
+};
 
-    // const geoJSONData = {
-    //     type: 'FeatureCollection',
-    //     features: trails.map(trail => {
-    //       let firstCoordinate;
-    //       if (trail.geometry.type === 'LineString') {
-    //         firstCoordinate = trail.geometry.coordinates[0];
-    //       } else if (trail.geometry.type === 'MultiLineString') {
-    //         firstCoordinate = trail.geometry.coordinates[0][0];
-    //       } else if (trail.geometry.type === 'Point') {
-    //         firstCoordinate = trail.geometry.coordinates;
-    //       }
-    //         return {
+    const geoJSONData = {
+        type: 'FeatureCollection',
+        features: trails.map(trail => {
+          let firstCoordinate;
+          if (trail.geometry.type === 'LineString') {
+            firstCoordinate = trail.geometry.coordinates[0];
+          } else if (trail.geometry.type === 'MultiLineString') {
+            firstCoordinate = trail.geometry.coordinates[0][0];
+          } else if (trail.geometry.type === 'Point') {
+            firstCoordinate = trail.geometry.coordinates;
+          }
+            return {
               
-    //           type: 'Feature',
-    //           properties: {
-    //               ...trail.properties,
-    //               lineGeometry: trail.geometry,
-    //               id: trail.properties['@id'],
-    //               uniqueId: trail._id,  
+              type: 'Feature',
+              properties: {
+                  ...trail.properties,
+                  lineGeometry: trail.geometry,
+                  id: trail.properties['@id'],
+                  uniqueId: trail._id,  
               
-    //           },
-    //           geometry: {
-    //             type: 'Point',
-    //             coordinates: firstCoordinate
-    //           }
-    //         };
-    //       })
-    //     };
+              },
+              geometry: {
+                type: 'Point',
+                coordinates: firstCoordinate
+              }
+            };
+          })
+        };
 
-  
+        if (loading) {
+          return <div>Loading...</div>;
+      }
   return (
     <Map
-        ref={mapRef}
-        {...viewport}
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-        mapStyle="mapbox://styles/mapbox/outdoors-v12"
-        onViewportChange={setViewport}
-    >
-        {/* Add Sources and Layers here. For example: */}
-        <Source
+    mapboxAccessToken={mapboxToken}
+    initialViewState={viewport}
+    style={{width: 600, height: 400}}
+    mapStyle="mapbox://styles/mapbox/streets-v9"
+  >
+    <Source
                 id="points"
                 type="geojson"
                 data={geoJSONData}
@@ -119,7 +135,7 @@ const MapComponent = ({ trails, mapboxToken, centerLat, centerLng }) => {
                     }}
                 />
         </Source>
-    </Map>
+        </Map>
   )
 }
 
