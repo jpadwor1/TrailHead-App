@@ -1,0 +1,14 @@
+.trail-popup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    flex-wrap: nowrap;
+}
+.trail-popup-heading {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-top: 15px;
+}
