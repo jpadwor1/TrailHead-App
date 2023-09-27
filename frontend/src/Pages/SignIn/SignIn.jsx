@@ -1,12 +1,18 @@
-import React from 'react'
-import './SignIn.css'
-import SignInForm from '../../components/SignInForm/SignInForm'
+import React from 'react';
+import './SignIn.css';
+import SignInForm from '../../components/Forms/SignInForm/SignInForm';
 
-function SignIn() {
+
+const SignIn = () => {
+
+
   return (
-    <div className="signin-wrapper">
-      <SignInForm />
-    </div>
+    
+      <div className='signin-page'>
+        <SignInForm />
+      </div>
+
+    
   )
 }
 

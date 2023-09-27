@@ -1,9 +1,6 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
-const bodyParser = require('body-parser');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const passport = require('passport');
-const trail = require('../models/trails');
 
 var userProfile;
 let authenticated;
@@ -20,36 +17,54 @@ const requireAuth = (req, res, next) => {
 };
 
 exports.register = async (req, res) => {
-  const { email, username, password } = req.body; 
+  const { email, password } = req.body; 
+  console.log(email, password)
+  // Input validation (as an example)
+  if (!email || !password) {
+    return res.status(400).json({ message: 'All fields are required.' });
+  }
+
+  // You can add more validation checks as needed
 
   try {
-      // Input validation should be performed here
-      
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = new User({
           local: {
-              username: username,
               email: email, 
               password: hashedPassword
           }
       });
+      console.log(user);
 
       await user.save();
 
-      // After successful registration, respond with a success message
       res.status(201).json({ message: 'User registered successfully' });
   } catch (err) {
-      // Handle errors and provide meaningful error responses
-      res.status(400).json({ error: 'User registration failed', message: err.message });
+      // Log the actual error for debugging purposes
+      console.error(err);
+
+      // Send a generic error message to the client
+      res.status(400).json({ message: 'User registration failed' });
   }
 };
 
 
-exports.login = (req, res) => {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-    userProfile = req.user;
-    res.redirect('/success');
+exports.login = (req, res, next) => {
+  console.log(req.body);
+  passport.authenticate('local', (err, user, info) => {
+      if (err) {
+          return res.status(400).json({ error: err.message });
+      }
+      if (!user) {
+          return res.status(401).json({ error: info.message });
+      }
+      req.logIn(user, (err) => {
+          if (err) {
+              return res.status(400).json({ error: err.message });
+          }
+          return res.status(200).json({ message: 'Logged in successfully' });
+      });
+  })(req, res, next);
 };
 
 exports.logout = (req, res) => {
