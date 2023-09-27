@@ -7,7 +7,7 @@ import Home from './Pages/Home/Home'
 import Layout from './components/Layout/Layout'
 import Register from './Pages/Register/Register'
 import SignIn from './Pages/SignIn/SignIn'
-import MapComponent from './components/Map/MapComponent'
+import MapComponent from './components/Map/LargeMap/MapComponent'
 import AllTrails from './Pages/AllTrails/AllTrails'
 import TrailDetailPage from './Pages/TrailDetailPage/TrailDetailPage'
 

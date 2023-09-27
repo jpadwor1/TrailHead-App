@@ -1,8 +1,7 @@
 import React from 'react'
-import TrailReviewStar from '../../components/Trails/TrailComponents/TrailReviewStar'
 import useFetchTrails from '../../hooks/useFetchTrails';
 import TrailCard from '../../components/Trails/TrailCard/TrailCard';
-import MapComponent from '../../components/Map/MapComponent';
+import MapComponent from '../../components/Map/LargeMap/MapComponent';
 import './AllTrails.css'
 
 const AllTrails = () => {

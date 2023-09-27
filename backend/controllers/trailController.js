@@ -86,9 +86,6 @@ exports.getTrails = async (req, res) => {
         // Get all trails excluding the one with the provided ID and without certain fields
         const allTrails = await trail.find({ 
           _id: { $ne: new mongoose.Types.ObjectId(req.params.id) }, // Exclude the trail with the provided ID
-        }, {
-            'properties.reviews': 0,
-            'properties.photos': 0
         });
 
         // Filter trails to get the nearby ones based on the city of the queried trail

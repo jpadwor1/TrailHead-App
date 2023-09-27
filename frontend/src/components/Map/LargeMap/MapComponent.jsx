@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import './MapComponent.css'
 import Map, { Source, Layer, Popup } from 'react-map-gl';
-import useFetchTrails from '../../hooks/useFetchTrails';
+import useFetchTrails from '../../../hooks/useFetchTrails';
 
 const MapComponent = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);

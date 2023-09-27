@@ -40,6 +40,7 @@ const WeatherComponent = ({ apiKey, trail }) => {
     }
 
     return (
+        <div className="weather-wrapper">
         <div className="weather-section">
             {weatherForecast.map((forecast, index) => {
                 const forecastDate = new Date(forecast.dt_txt);
@@ -75,6 +76,7 @@ const WeatherComponent = ({ apiKey, trail }) => {
                     </div>
                 );
             })}
+        </div>
         </div>
     );
 }
