@@ -1,0 +1,19 @@
+.all-trails-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 20px;
+    padding-top: 5px;
+}
+.trail-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(300px, 500px, 500px);
+    height: 100%;
+    padding-right: 10px;
+    overflow-y: scroll; /* To allow scrolling if the list is long */
+}
+

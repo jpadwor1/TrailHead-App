@@ -2,8 +2,16 @@ const trail = require('../models/trails');
 const weatherApiKey = process.env.WEATHER_API_KEY;
 const googleApiKey= process.env.GOOGLE_API_KEY;
 const mapbox = process.env.MAPBOX;
-const { shuffleArray, findClosestState, getRandomFloat } = require('../utils/helpers');
-
+const mongoose = require('mongoose');
+const { findClosestState, getRandomFloat } = require('../utils/helpers');
+// Example shuffleArray function
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 exports.findNearbyTrails = async (req, res) => {
 
     const { latitude, longitude } = req.body;
@@ -66,48 +74,42 @@ exports.getTrails = async (req, res) => {
     }
   };
 
-exports.getTrailById = async (req,res) => {
-  
-    const trails = await trail.findById(req.params.id);
-    const filteredTrails = await trail.find({}, { 'properties.reviews': 0, 'properties.photos': 0 });
-    const reviews = trails.properties.reviews;
-    
-      let longitude, latitude;
-      if (trails.geometry.type === 'LineString') {
-          longitude = trails.geometry.coordinates[0][0];
-          latitude = trails.geometry.coordinates[0][1];
-      } else if (trails.geometry.type === 'MultiLineString') {
-          longitude = trails.geometry.coordinates[0][0][0];
-          latitude = trails.geometry.coordinates[0][0][1];
-      }
-  
-      var randomTags = [];
-  while (randomTags.length < 10) {
-    var randomIndex = Math.floor(Math.random() * trailTags.length);
-    var randomTag = trailTags[randomIndex];
-    if (!randomTags.includes(randomTag)) {
-      randomTags.push(randomTag);
+  exports.getTrailById = async (req, res) => {
+    console.log("Request received for trail ID:", req.params.id);
+    try {
+        // Get the trail by its ID
+        const trailById = await trail.findById(req.params.id);
+        if (!trailById) {
+            return res.status(404).json({ message: "Trail not found" });
+        }
+
+        // Get all trails excluding the one with the provided ID and without certain fields
+        const allTrails = await trail.find({ 
+          _id: { $ne: new mongoose.Types.ObjectId(req.params.id) }, // Exclude the trail with the provided ID
+        }, {
+            'properties.reviews': 0,
+            'properties.photos': 0
+        });
+
+        // Filter trails to get the nearby ones based on the city of the queried trail
+        const nearbyTrails = allTrails.filter(t => t.properties.city === trailById.properties.city).slice(0, 4);
+
+        // Shuffle the nearby trails array (assuming you have a shuffleArray function)
+        const shuffledNearbyTrails = shuffleArray(nearbyTrails);
+
+        // Return the trail and the nearby trails
+        res.json({
+            trail: trailById,
+            nearbyTrails: shuffledNearbyTrails
+        });
+
+    } catch (error) {
+        console.error("Error fetching the trail by ID:", error);
+        res.status(500).json({ message: "Server error" });
     }
-  }
-  
-    const nearbyTrails = filteredTrails.filter(trail => trail.properties.city === trails.properties.city).slice(1,5);
-    let shuffledNearbyTrails = shuffleArray(nearbyTrails);
-    res.render('./trails/show', {filteredTrails:filteredTrails,
-      mapbox:mapbox,
-      shuffledNearbyTrails:shuffledNearbyTrails,
-      authenticated:req.isAuthenticated(),
-      reviews:reviews,
-      trailImages:trailImages,
-      getRandomFloat: getRandomFloat, 
-      nearbyTrails : nearbyTrails, 
-      apiKey:weatherApiKey, 
-      trails : trails, 
-      longitude : longitude, 
-      latitude : latitude, 
-      randomTags:randomTags,
-      googleApiKey:googleApiKey
-    });
 };
+
+
 
 exports.searchTrails = async (req,res) => {
   

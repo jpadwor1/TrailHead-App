@@ -8,6 +8,9 @@ import Layout from './components/Layout/Layout'
 import Register from './Pages/Register/Register'
 import SignIn from './Pages/SignIn/SignIn'
 import MapComponent from './components/Map/MapComponent'
+import AllTrails from './Pages/AllTrails/AllTrails'
+import TrailDetailPage from './Pages/TrailDetailPage/TrailDetailPage'
+
 function App() {
 
   return (
@@ -18,7 +21,8 @@ function App() {
         <Route exact path='/'  element={<Home />} />
         <Route path='/register' element={<Register />} />
         <Route path='/signin' element={<SignIn />} />
-        <Route path='/map' element={<MapComponent />} />
+        <Route path='/alltrails' element={<AllTrails />} />
+        <Route path='/trail/:id' element={<TrailDetailPage />} />
        
     </Routes>
     </Layout>

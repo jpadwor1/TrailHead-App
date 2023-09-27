@@ -1,0 +1,515 @@
+.show-page-container {
+    margin: 5% 10% 5% 10%;
+    background-color: #fff;
+    color: #efefec;
+    box-shadow: 0 2px 24px 0 rgba(0,0,0,.24);
+    border-radius: 18px 18px 0 0;
+    overflow: hidden;
+}
+
+.show-header-container {
+ position: relative;
+ line-height: 1.3;
+}
+
+
+.header-title {
+    font-size: 2em;
+    font-weight: 700;   
+}
+
+.header-image {
+    width: 100%;   
+}
+
+.header-overlay {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,.7));
+
+}
+
+.trail-details {
+    position: absolute;
+    top: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 0 0 2%;
+}
+
+.trail-reviews {
+    display: flex;
+    flex-direction: row;
+    align-items: middle;
+    font-weight: 700;
+}
+
+.review-star,
+.trail-difficulty,
+.trail-reviews p {
+    margin: 0 2px 0 2px;
+}
+.review-star {
+    width: 18px;
+    height: 18px;   
+}
+.button-wrapper {
+    position: relative;
+    width: 100%;
+    height: 70px;
+}
+
+.rock-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 70px;
+}
+
+.show-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.button-module p {
+    color: #efefef;
+    font-weight: 600;
+}
+
+.icon-container {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 4px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background-color: #efefec;
+}
+
+.icon-container img {
+    width: 24px;
+    height: 24px;   
+}
+.button-module{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;  
+    text-align: center;
+}
+
+.module-link {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    top: -24px;
+    cursor: pointer;
+}
+
+.button-module:hover  {
+    background-color: rgba(0,0,0,.24);
+    
+}
+
+.trail-module-trail-info {
+    display: flex;
+    flex-direction: row;
+    background-color: #efefec;
+}
+
+.trail-info-module {
+    display: flex;
+    flex-direction: column;
+    color: #000;
+}
+
+.trail-info-module h3 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.trail-info-module li p {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.specs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px 0;
+}
+
+.trail-description {
+    position: relative;
+}
+
+.trail-description a {
+    position: absolute;
+    bottom: 3px;
+    right: 13px;
+    font-weight: 700;
+    text-decoration: underline;
+    background-color: #efefec;
+    box-shadow: -9px -1px 7px 5px #efefec;
+    display: '';
+}
+
+.truncate{
+    display: -webkit-box; 
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;  
+    text-overflow: ellipsis;
+    overflow: hidden;  
+}
+
+.trail-description p {
+    font-family: 'Manrope', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #2b381f;
+    margin: 10px 24px;
+    font-weight: 500;
+}
+
+.add-review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 24px 0;
+
+}
+
+.add-review-button {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border:1px solid #025464;
+    border-radius: 8px;
+    background-color: #025464;
+    color: #fff;
+}
+
+.add-review-button:hover {
+    background-color: transparent;
+    color: #025464;
+}
+
+.modal {
+    position: absolute;
+    top:0;
+    transform: translateX(12px);
+    left: auto;
+    right: auto;
+    width: 500px;
+    height: 550px;
+    display: hidden;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 8px 16px -1px rgba(0,0,0,.3);
+}
+
+.modal-content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    
+}
+
+.close {
+    align-self: flex-end;
+    margin: 10px 20px 0 0;
+}
+
+#reviewForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+
+.review-name,
+.review-rating {
+    width:70%;
+    color: #2b381f;
+    border-radius: 8px;
+    border: 1px solid #2b381f;
+}
+
+.add-review-image {
+    width: 310px;
+    max-height: 200px;
+    align-self: center;
+    border-radius: 8px;
+   
+}
+
+.review-heading {
+    font-size: 22px;
+    align-self: center;
+    margin-top: 10px;
+}
+
+.review-rating {
+    width: 20%;
+    text-align: center;
+}
+
+.modal-submit-btn{
+    border: 1px solid #025464;
+    border-radius: 8px;
+    background-color: #025464;
+    color: #fff;
+    font-weight: 700;
+
+}
+.review-name::placeholder,
+.review-rating::placeholder,
+.add-review-body::placeholder {
+    font-weight: 700;
+    padding-left: 10px;
+}
+
+.add-review-body {
+    width: 70%;
+    height: 100px;
+    color: #2b381f;
+    border-radius: 8px;
+    border: 1px solid #2b381f;
+    margin-top: 0;
+}
+
+
+
+.trail-module-divider {
+    border-bottom: 2px solid #dbdad2;
+    margin: 0 24px;
+}
+
+.trail-info-aside {
+    padding: 24px 0;
+    background-color: #efefec;
+    border-left: 2px solid #dbdad2;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    position: relative;
+}
+
+.show-map-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#mapShow {
+    width: 85%;
+    height: 100%;
+    margin:auto auto;
+    border-radius: 18px;
+}
+
+.tags-section {
+    padding: 24px auto;
+    margin: 24px 8px 24px 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.trail-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border: 1px solid #9f9f9e;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px;
+}
+
+.weather-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 12px;
+}
+
+.weather-header{
+     text-transform: capitalize;
+     font-weight: 500;
+     color: #025464;
+}
+.weather-section{
+    position: relative;
+    background: #efefec;
+    font-family: 'Manrope', sans-serif;
+    transition: 0.2s ease-out;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.weather-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  text-align: center;
+}
+
+#weather-image{
+    width: 32px;
+    height: 32px;
+}
+
+.weather-box .temperature{ 
+    color: #025464;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.not-found{
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    scale: 0;
+    opacity: 0;
+    display: none;
+}
+
+.not-found img{
+    width: 70%;
+}
+
+.not-found p{
+    color: #025464;
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 12px;
+}
+
+.weather-box{
+    scale: 0;
+    opacity: 0;
+}
+
+.fadeIn{
+    animation: 0.1s fadeIn forwards;
+    animation-delay: 0.1s;
+}
+
+@keyframes fadeIn{
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+.nearby-trails-wrapper {
+    color: #2b381f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.nearby-trail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left; 
+    transition: all 0.15s ease-in;
+}
+
+.nearby-trail-container:hover {
+    scale: 1.03;
+}
+
+.nearby-trails-header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+    
+}
+
+.nearby-trails-header button {
+    text-decoration: underline;
+    border: none;
+    background: transparent;
+}
+
+.nearby-trails-header p {
+    font-weight: 700;
+}
+
+.nearby-trail-image {
+    width: 350px;
+    height: 300px;
+    border-radius: 16px;
+    align-self: center;
+}
+
+.nearby-trail-reviews {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.nearby-trail-reviews p {
+    margin-bottom: 0;
+}
+
+
+.nearby-trail-container h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.nearby-review-star {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.nearby-trail-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 7%;
+    margin-bottom: 20px;
+}
+

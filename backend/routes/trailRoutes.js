@@ -15,7 +15,10 @@ router.get('/api/trails', (req, res, next) => {
     trailController.getTrails(req, res, next);
   });
   
-router.get('/api/trails/:id', trailController.getTrailById);
+router.get('/api/trails/:id', (req, res, next) => {
+  console.log("GET /api/trails/:id route hit");
+  trailController.getTrailById(req, res, next);
+});
 
 router.post('/api/trails/search', trailController.searchTrails);
 

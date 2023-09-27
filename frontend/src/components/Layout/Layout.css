@@ -1,7 +1,8 @@
 .outer {
     max-width: 100vw;
     width: 100vw;
-    height: 100vh;
+    padding-top: 50px;
+    height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -11,4 +12,5 @@
 .inner {
     max-width: 100vw;
     width: 100%;
+    overflow: hidden;
 }

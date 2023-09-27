@@ -1,0 +1,11 @@
+.trail-review-star-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.review-star {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}

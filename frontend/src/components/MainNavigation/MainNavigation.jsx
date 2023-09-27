@@ -11,7 +11,7 @@ function MainNavigation() {
   return (
     <Navbar fixed='top' expand="xl" className="bg-body-tertiary justify-content-between">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
             <img className='logo' src={Logo} alt="Logo" />
         </Navbar.Brand>
         
