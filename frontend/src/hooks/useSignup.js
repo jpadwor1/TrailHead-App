@@ -4,11 +4,13 @@ import axios from 'axios';
 
 export const useSignup = () => {
     const [error, setError] = useState(null);
-  const navigate = useNavigate();
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+    const navigate = useNavigate();
+
     const signup = async ( email, password) => {
 
         try {
-            const response = await axios.post('http://localhost:3000/api/register', {
+            const response = await axios.post(`${API_BASE_URL}/api/register`, {
                 email: email,
                 password: password
             });

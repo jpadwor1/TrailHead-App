@@ -14,7 +14,10 @@ const connectDB = require('./database');
 connectDB();
 
 //Middleware
-app.use(cors({ origin: 'http://localhost:5173', credentials: true })); // CORS configuration to allow requests from your frontend
+app.use(cors({
+  origin: 'http://localhost:5173',  // replace with your frontend app's URL
+  credentials: true
+}));
 app.use(express.urlencoded({ extended: true}));
 app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
