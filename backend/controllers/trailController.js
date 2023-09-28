@@ -89,7 +89,7 @@ exports.getTrails = async (req, res) => {
         });
 
         // Filter trails to get the nearby ones based on the city of the queried trail
-        const nearbyTrails = allTrails.filter(t => t.properties.city === trailById.properties.city).slice(0, 4);
+        const nearbyTrails = allTrails.filter(t => t.properties.city === trailById.properties.city).slice(0, 24);
 
         // Shuffle the nearby trails array (assuming you have a shuffleArray function)
         const shuffledNearbyTrails = shuffleArray(nearbyTrails);
