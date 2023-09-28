@@ -11,7 +11,6 @@ router.post('/api/nearby', trailController.findNearbyTrails);
 router.get('/', trailController.getHome); 
 
 router.get('/api/trails', (req, res, next) => {
-    console.log("GET /api/trails route hit");
     trailController.getTrails(req, res, next);
   });
   
